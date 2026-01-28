@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>IPL Team Name : {{ teamName }}</h1>
+    <h2>Captail of {{teamName}} is {{captain}}</h2>
+    <h2>Number of Trophy : {{numOfTrophy}}</h2>
+    {% for i in players %}
+        <h4>{{i}}</h4>
+    {% endfor %}
+
+    <h1>Status</h1>
+    {% if numOfTrophy >= 5%}
+        <h3>You are such a legend</h3>
+
+        {% else %}  
+            <h3>Keep Going</h3>
+
+    {% endif %}
+</body>
+</html>

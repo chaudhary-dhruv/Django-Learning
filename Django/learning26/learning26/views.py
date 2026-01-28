@@ -21,3 +21,20 @@ def shows(request):
 
 def news(request):
     return render(request , 'news.html')
+
+def reciepe(request):
+    ingredients_list = ["Tuar Dal" , "Jeggery" , "Lemon" , "Water"]
+    data  = {"name" : "Dal" , 
+             "time" : 30 ,
+             "ingredients" : ingredients_list
+            }
+    return render(request , 'reciepe.html' , data)
+
+def team(request):
+    players = ["Faf Du Plasis" , "Suresh Raina" , "Dwayne Bravo" ,"MS Dhoni" , "Ravindra Jadeja" , "R Ashwin"]
+    data = {"teamName" : "CSK" ,
+            "captain" : "MS Dhoni" ,
+            "numOfTrophy" : 5,
+            "players" : players
+            }
+    return render(request ,'team.html' , data)
