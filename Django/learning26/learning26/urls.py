@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
 from . import views
 
 urlpatterns = [
@@ -28,5 +29,7 @@ urlpatterns = [
     path('shows/' , views.shows),
     path('news/' , views.news),
     path('rec/' , views.reciepe),
-    path('team/' , views.team)
+    path('team/' , views.team),
+
+    path('student/' , include("student.urls"))
 ]
