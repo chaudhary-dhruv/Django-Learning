@@ -1,12 +1,11 @@
 from django.shortcuts import render
 
-def home(request):
-    return render(request , 'student.html')
+# Create your views here.
 
-def dashboard(request):
-    student = {
-        "name" : "Dhruv" ,
-        "age" : 25 , 
-        "sport" : "Cricket"
-    }
-    return render(request , 'studentTemplate/dashboard.html',student)
+def studentHome(request):
+    return render(request,"studentTemplate/studentHome.html")
+def studentDashboard(request):
+    student = {"name":"raj","age":23,"city":"Ahmedabad"}
+    return render(request,"studentTemplate/dashboard.html",student)    
+    #student/studentDashboard.html
+    #folder/filename
