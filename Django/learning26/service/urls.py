@@ -3,5 +3,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('serviceList/' , views.serviceList)
+    path('serviceList/' , views.serviceList),
+    path('createServiceForm/' , views.createServiceForm)
 ]
