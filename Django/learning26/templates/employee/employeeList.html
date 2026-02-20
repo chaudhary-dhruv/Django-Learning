@@ -1,4 +1,16 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+</head>
+<body>
+
 <h1>EMPLOYEE LIST</h1>
+
+<a href="{% url 'employeeCreate' %}">Create Employee</a>
+<a href="{% url 'filterEmployee' %}">Filter</a>
+<a href="{% url 'sortEmployee' 1 %}">Assending</a>
+<a href="{% url 'sortEmployee' 2 %}">Desending</a>
 
 
 <table border="1">
@@ -10,6 +22,7 @@
             <th>Salary</th>
             <th>Join Date</th>
             <th>Post</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +34,13 @@
             <td>{{emp.salary}}</td>
             <td>{{emp.join_date}}</td>
             <td>{{emp.post}}</td>
+            
+            <td><a href="{% url 'deleteEmployee' emp.id %}"> Delete </a></td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+<a href="{% url 'employeeCreate' %}">
+    <button type="button">Add New Employee</button>
+</a>

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render , HttpResponse , redirect
 from .models import Employee
+from .forms import employeeCreateForm
 
 
 # Create your views here.
@@ -9,6 +10,7 @@ def employeelist(request):
     employees = Employee.objects.all().values()
     print(employees)
     return render(request , 'employee/employeeList.html' , {"employees" : employees})
+    
 
 def employeefilter(request):
     employee = Employee.objects.filter(name = 'Dhruv').values()
@@ -62,3 +64,32 @@ def employeefilter(request):
     
 
     return render(request , 'employee/employeeFilter.html')
+
+def employeeCreate(request):
+    if request.method == "POST":
+        form = employeeCreateForm(request.POST)
+        form.save()
+        return redirect('employeeList')
+    
+    else:
+        form = employeeCreateForm()
+        return render(request, "employee/employeeCreate.html" , {"form" : form})
+    
+def deleteEmployee(request , id):
+    print("id from url=" , id)
+    Employee.objects.filter(id=id).delete()
+    return redirect('employeeList')
+
+def filterEmployee(request):
+    emp = Employee.objects.filter(age__gt = 25).values()
+    print("Filtered Employee : " , emp)
+    return render(request , 'employee/employeeList.html'  , {"emp" : emp})
+
+def sortEmployee(request , id):
+    if id==1:
+        assending = Employee.objects.order_by("age").values()
+        return render(request , 'employee/employeeList.html' , {"assending" : assending})
+
+    else:
+        desending = Employee.objects.order_by("-age").values()
+        return render(request , 'employee/employeeList.html' , {"desending" : desending})
