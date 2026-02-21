@@ -23,6 +23,7 @@
             <th>Join Date</th>
             <th>Post</th>
             <th>Action</th>
+            <th colspan="2">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -33,9 +34,9 @@
             <td>{{emp.age}}</td>
             <td>{{emp.salary}}</td>
             <td>{{emp.join_date}}</td>
-            <td>{{emp.post}}</td>
-            
+            <td>{{emp.post}}</td>            
             <td><a href="{% url 'deleteEmployee' emp.id %}"> Delete </a></td>
+            <td><a href="{% url 'updateEmployee' emp.id %}"> Update </a></td>
         </tr>
         {% endfor %}
     </tbody>

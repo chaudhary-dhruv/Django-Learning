@@ -7,8 +7,8 @@ from .forms import employeeCreateForm
 
 def employeelist(request):
     #employees = Employee.objects.all()    # select * from employee
-    employees = Employee.objects.all().values()
-    print(employees)
+    employees = Employee.objects.order_by('id').values()
+    
     return render(request , 'employee/employeeList.html' , {"employees" : employees})
     
 
@@ -74,6 +74,17 @@ def employeeCreate(request):
     else:
         form = employeeCreateForm()
         return render(request, "employee/employeeCreate.html" , {"form" : form})
+    
+def employeeUpdate(request , id):
+    emp = Employee.objects.get(id = id)
+    if request.method == 'POST': 
+        form = employeeCreateForm(request.POST , instance=emp)
+        form.save()
+        return redirect("employeeList")
+    else:
+        form = employeeCreateForm(instance = emp)
+        return render(request , 'employee/employeeCreate.html' , {'form':form})
+
     
 def deleteEmployee(request , id):
     print("id from url=" , id)
