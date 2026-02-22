@@ -1,47 +1,44 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Employee List</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<h1>EMPLOYEE LIST</h1>
+{% block content %}
 
-<a href="{% url 'employeeCreate' %}">Create Employee</a>
-<a href="{% url 'filterEmployee' %}">Filter</a>
-<a href="{% url 'sortEmployee' 1 %}">Assending</a>
-<a href="{% url 'sortEmployee' 2 %}">Desending</a>
+<nav class="navbar">       
+    <div class="navbar-links">
+        <a href="{% url 'filterEmployee' %}">Filter</a>
+        <a href="{% url 'sortEmployee' 1 %}">Ascending By Age</a>
+        <a href="{% url 'sortEmployee' 2 %}">Descending By Age</a>
+    </div>
+</nav>
 
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>Join Date</th>
+                <th>Post</th>
+                <th colspan="2">Action</th>
+            </tr>
+        </thead>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Salary</th>
-            <th>Join Date</th>
-            <th>Post</th>
-            <th>Action</th>
-            <th colspan="2">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for emp in employees  %}
-        <tr>
-            <td>{{emp.id}}</td>
-            <td>{{emp.name}}</td>
-            <td>{{emp.age}}</td>
-            <td>{{emp.salary}}</td>
-            <td>{{emp.join_date}}</td>
-            <td>{{emp.post}}</td>            
-            <td><a href="{% url 'deleteEmployee' emp.id %}"> Delete </a></td>
-            <td><a href="{% url 'updateEmployee' emp.id %}"> Update </a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        <tbody>
+            {% for emp in employees %}
+            <tr>
+                <td>{{ emp.id }}</td>
+                <td>{{ emp.name }}</td>
+                <td>{{ emp.age }}</td>
+                <td>{{ emp.salary }}</td>
+                <td>{{ emp.join_date }}</td>
+                <td>{{ emp.post }}</td>
+                <td><a href="{% url 'deleteEmployee' emp.id %}">Delete</a></td>
+                <td><a href="{% url 'updateEmployee' emp.id %}">Update</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
-<a href="{% url 'employeeCreate' %}">
-    <button type="button">Add New Employee</button>
-</a>
+{% endblock %}

@@ -5,6 +5,9 @@ from .forms import employeeCreateForm
 
 # Create your views here.
 
+def home(request):
+    return render(request , 'employee/home.html')
+
 def employeelist(request):
     #employees = Employee.objects.all()    # select * from employee
     employees = Employee.objects.order_by('id').values()

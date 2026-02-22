@@ -24,7 +24,7 @@ urlpatterns = [
     path('test/', views.test),
     path('aboutUs/', views.aboutUs),
     path('contactUs/' , views.contactUs),
-    path('' , views.home),
+    path('trialHome/' , views.homeOld),
     path('movies/' , views.movies),
     path('shows/' , views.shows),
     path('news/' , views.news),

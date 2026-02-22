@@ -10,8 +10,8 @@ def aboutUs(request):
 def contactUs(request):
     return render(request , 'contactus.html')
 
-def home(request):
-    return render(request , 'home.html')
+def homeOld(request):
+    return render(request , 'homeOld.html')
 
 def movies(request):
     return render(request , 'movies.html')
